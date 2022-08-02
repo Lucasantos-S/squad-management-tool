@@ -11,7 +11,10 @@
     <header class="header">
       <div class="logo-container">
         <div class="logo">
-          <img src="public/image/Logo2019-h-semtagOK-300x99.png" alt="logo venturus" />
+          <img
+            src="public/image/Logo2019-h-semtagOK-300x99.png"
+            alt="logo venturus"
+          />
         </div>
         <a href="#">Squad Management Toll</a>
       </div>
@@ -27,7 +30,6 @@
           <h1>My teams</h1>
           <button class="btn-modal">+</button>
         </div>
-
         <table class="records">
           <thead>
             <tr>
@@ -35,79 +37,7 @@
               <th class="description">Description</th>
             </tr>
           </thead>
-
-          <tbody>
-            <tr>
-              <td>Barcelona</td>
-              <td>Barcelona squad</td>
-              <td class="btn-crud">
-                <button>
-                  <img src="public/image/delete_icon.svg" alt="button delete" />
-                </button>
-                <button>
-                  <img src="public/image/share_icon.svg" alt="button shere" />
-                </button>
-                <button>
-                  <img src="public/image/edit_icon.svg" alt="button edit" />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <td>Barcelona</td>
-              <td>Barcelona squad</td>
-              <td class="btn-crud">
-                <button>
-                  <img src="public/image/delete_icon.svg" alt="button delete" />
-                </button>
-                <button>
-                  <img src="public/image/share_icon.svg" alt="button shere" />
-                </button>
-                <button>
-                  <img src="public/image/edit_icon.svg" alt="button edit" />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <td>Barcelona</td>
-              <td>Barcelona squad</td>
-              <td class="btn-crud">
-                <button>
-                  <img src="public/image/delete_icon.svg" alt="button delete" />
-                </button>
-                <button>
-                  <img src="public/image/share_icon.svg" alt="button shere" />
-                </button>
-                <button>
-                  <img src="public/image/edit_icon.svg" alt="button edit" />
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <td>Barcelona</td>
-              <td>Barcelona squad</td>
-              <td class="btn-crud">
-                <button>
-                  <img
-                    src="public/image/delete_icon.svg"
-                    alt="button delete"
-                    id="delete"
-                  />
-                </button>
-                <button>
-                  <img src="public/image/share_icon.svg" alt="button shere" />
-                </button>
-                <button>
-                  <img src="public/image/edit_icon.svg" alt="button edit"  />
-                </button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
 
@@ -118,22 +48,11 @@
         <div class="teams-list">
           <div class="ranking-contend">
             <h1>Highest avg age</h1>
-            <ul class="highest-age">
-              <li>teste1</li>
-              <li>teste1</li>
-              <li>teste1</li>
-              <li>teste1</li>
-              <li>teste1</li>
-            </ul>
+            <ul class="highest-age"></ul>
           </div>
           <div class="ranking-contend">
             <h1>Lowest avg age</h1>
             <ul class="lowest-age">
-              <li>teste2</li>
-              <li>teste2</li>
-              <li>teste2</li>
-              <li>teste2</li>
-              <li>teste2</li>
             </ul>
           </div>
         </div>
@@ -149,37 +68,51 @@
       </div>
     </section>
 
-    <section class="modal-container active">
+    <section class="modal-container">
       <div class="modal ativo">
         <div class="modal-title">
           <h1>Create your team</h1>
         </div>
         <div class="information-team">
           <h1>TEM INFORMATION</h1>
-          <form class="information-form">
+          <form class="information-form" id="form">
             <div class="container1">
-              <label for="name" id="name">Team name</label>
+              <label for="name">Team name</label>
               <input
                 type="text"
                 name="name"
                 id="name"
+                data-index="new"
                 placeholder="insert team name"
+                required
               />
               <label for="description">Description</label>
-              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <textarea name="description" id="description"></textarea>
             </div>
             <div class="container1">
               <label for="website">Website</label>
-              <input type="url" placeholder="http:/myteam.com" />
-              </div>
+              <input
+                type="text"
+                name="website"
+                id="website"
+                placeholder="http:/myteam.com"
+              />
+            </div>
           </form>
         </div>
+        <button
+          type="submit"
+          class="btn-modal btn-save"
+          style="width: 400px; display: block; margin: 0 auto"
+        >
+          Enviar
+        </button>
       </div>
     </section>
-
     <footer class="footer">
       <h1>todos diretos reservador</h1>
     </footer>
+
     <script type="module" src="js/main.js"></script>
   </body>
 </html>

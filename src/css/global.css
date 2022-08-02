@@ -74,6 +74,10 @@ ul {
 :root {
   --font: Arial, Helvetica, sans-serif;
 }
+
+body{
+  background: #eee7ee;
+}
 label {
   font-family: var(--font);
   font-size: 1.3rem;
@@ -142,6 +146,8 @@ label {
 
 /*grid container*/
 .container {
+  max-width: 1600px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -152,9 +158,11 @@ label {
   grid-template-areas:
     "myteams ranking"
     "myteams picked";
-  background: #eee7ee;
-  height: 88vh;
-  padding: 45px 50px 0 50px;
+ 
+  height: 85vh;
+  padding-top: 40px;
+  z-index: 0;
+ 
 }
 .my-teams {
   grid-area: myteams;
@@ -188,7 +196,7 @@ label {
   z-index: 0;
   position: relative;
   margin-bottom: 30px;
-  padding: 50px;
+  padding: 30px;
 }
 .header-my-teams::after,
 .top-title::after {
@@ -199,7 +207,7 @@ label {
   background: #eee7ee;
   z-index: 1000;
   position: absolute;
-  top: 120px;
+  top: 100px;
   right: 0px;
 }
 
@@ -271,14 +279,23 @@ label {
   justify-content: end;
 }
 .btn-crud button {
+  display: block;
+  z-index: 1000;
+  width: 3rem;
   margin: 0 10px;
   background: none;
   border: none;
-  cursor: pointer;
+  cursor: pointer; 
+}
+.btn-crud button img{
+  z-index: -10;
+  
 }
 
 /*ranque dos times*/
-
+.ranking{
+  height: 430px;
+}
 .teams-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -289,7 +306,7 @@ label {
   margin: 0 20px;
 }
 .ranking-contend h1 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font);
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -302,10 +319,11 @@ label {
   border-radius: 5px;
 }
 .ranking-contend ul li {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   font-family: var(--font);
   color: #7e767e;
-  padding: 15px 40px;
+  padding: 10px 20px;
   background: #fff;
   margin: 5px;
   border-radius: 5px;
@@ -313,6 +331,9 @@ label {
 }
 .ranking-contend ul li:hover {
   border: 2px ridge red;
+}
+.ranking-contend ul li span {
+  color: #2d0b7c;
 }
 
 .picked-player {
@@ -333,10 +354,15 @@ label {
   font-weight: bolder;
 }
 
+
+/*foooter*/
 .footer {
-  display: block;
-  height: 65px;
+ 
   padding-top: 20px;
   background: #d8d5d8;
   text-align: center;
+  z-index: 1000;
+
 }
+
+
