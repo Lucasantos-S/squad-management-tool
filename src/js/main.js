@@ -201,7 +201,7 @@ const includeList = () => {
           return highest
         }
     })
-    console.log(top5);
+    
 };
 
 includeList();
