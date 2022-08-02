@@ -73,12 +73,14 @@ ul {
 }
 :root {
   --font: Arial, Helvetica, sans-serif;
+  --primary: #e31a6a;
+  --secondary: #a62178;
 }
 
 body{
   background: #eee7ee;
 }
-label {
+label, h3 {
   font-family: var(--font);
   font-size: 1.3rem;
   font-weight: bolder;
