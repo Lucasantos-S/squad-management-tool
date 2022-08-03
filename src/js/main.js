@@ -169,6 +169,9 @@ modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
+
+
+
 // const includeList = () => {
 //   const dbTeam = getLocalStotage();
 //   let array = []
