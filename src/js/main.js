@@ -1,8 +1,7 @@
 /* ativando o modal apos o click no botão*/
 const buttonModal = document.querySelector(".btn-modal");
 const modalContainer = document.querySelector(".modal-container");
-/**botao pra salvar o time */
-const btnSave = document.querySelector(".btn-save");
+
 
 /* apos clicar e adicionado a class active no modal-container*/
 const activeModal = () => modalContainer.classList.add("active");
@@ -19,6 +18,9 @@ const removeActive = (event) => {
 const closeModal = () => modalContainer.classList.remove("active");
 
 /************************************************************************************************************** */
+                            /*SALVANDO OS INPUT NO LOCAL STOTAGE*/ 
+/**botao pra salvar o time */
+const btnSave = document.querySelector(".btn-save");
 
 const getLocalStotage = () => JSON.parse(localStorage.getItem("teams")) ?? [];
 const setLocalStogae = (dbTeam) =>
@@ -122,6 +124,8 @@ const includeTeamTable = () => {
 
 includeTeamTable();
 
+
+
 /* apagando as linhas antes de incluir a proxima*/
 const clearTable = () => {
   const rows = document.querySelectorAll(".records table tr");
@@ -133,6 +137,7 @@ const fillFilds = (team) => {
   document.getElementById("description").value = team.description;
   document.getElementById("website").value = team.website;
   document.getElementById("name").dataset.index = team.index;
+  document.querySelector('[data-position]').dataset.position = '3-4-3'
 };
 
 ///editar e deletar um time da tabela
@@ -169,42 +174,42 @@ modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
-const includeList = () => {
-  const dbTeam = getLocalStotage();
-  let array = []
-  const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
-    const age = player.reduce((accumulator, { age }) => {
-      return accumulator + age / 11;
-    }, 0);
-    const ageFormate = age.toFixed(1);
-    array.push(ageFormate)
+// const includeList = () => {
+//   const dbTeam = getLocalStotage();
+//   let array = []
+//   const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
+//     const age = player.reduce((accumulator, { age }) => {
+//       return accumulator + age / 11;
+//     }, 0);
+//     const ageFormate = age.toFixed(1);
+//     array.push(ageFormate)
     
-    accumulator += `
-        <li>
-          ${name}
-          <span>
-          ${ageFormate}
-          </span>
-        </li>`.replace(/,/g, "");
-    return accumulator;
-  }, "");
-  const listContend = document.querySelector(".highest-age")
-    listContend.innerHTML = creatListRank
-  console.log(array)
-  const sorted = array.sort((a,b) => {
-    return a - b;
-    }).reverse()
-    console.log(sorted);
+//     accumulator += `
+//         <li>
+//           ${name}
+//           <span>
+//           ${ageFormate}
+//           </span>
+//         </li>`.replace(/,/g, "");
+//     return accumulator;
+//   }, "");
+//   const listContend = document.querySelector(".highest-age")
+//     listContend.innerHTML = creatListRank
+//   console.log(array)
+//   const sorted = array.sort((a,b) => {
+//     return a - b;
+//     }).reverse()
+//     console.log(sorted);
 
-    const top5 = sorted.filter((highest, index) => {
-        if(index < 4) {
-          return highest
-        }
-    })
+//     const top5 = sorted.filter((highest, index) => {
+//         if(index < 4) {
+//           return highest
+//         }
+//     })
     
-};
+// };
 
-includeList();
+// includeList();
 
 const jogadores = () => {
   const jogadores = [
@@ -261,3 +266,17 @@ const jogadores = () => {
   ];
   return jogadores;
 };
+
+
+
+
+
+
+/*  atualiza o campo do jogador de acordo com a formação */
+
+const position = document.querySelector('[data-position]')
+
+const handlePosition = ({target}) => position.dataset.position = target.value
+
+
+document.querySelector('.formation').addEventListener('change', handlePosition)

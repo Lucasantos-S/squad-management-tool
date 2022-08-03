@@ -98,32 +98,103 @@
               />
 
               <div class="team-type">
-                <h3>Team type</h3>
+                <label>Team type</label>
                 <div class="inputRadio">
+                  <input type="radio" value="Real" id="Real" name="Team-type" />
+                  <label for="Real" id="Team-type" name="Team-type">Real</label>
                   <input
                     type="radio"
-                    value="Real"
-                    id="Real"
+                    id="fantasy"
                     name="Team-type"
+                    value="fantasy"
+                    checked
                   />
-                  <label for="Real" id="Team-type" name="Team-type"
-                    >Real</label
+                  <label for="fantasy" id="fantasy" name="Team-type"
+                    >Fantasy</label
                   >
-                  <input type="radio" id="fantasy" name="Team-type" value="fantasy" checked />
-                  <label for="fantasy" id="fantasy" name="Team-type" >Fantasy</label>
                 </div>
               </div>
             </div>
           </form>
+
+          <div class="configuration-container">
+            <div><h2>CONFIGURATION SQUAD</h2></div>
+            <section class="input-configuration"></section>
+          </div>
+          <div class="configure-squad">
+            <div class="field-container">
+              <div class="formation-container">
+                <p>Formation</p>
+                <select class="formation" id="formation">
+                  <option name="formation" value="3-4-3">3 - 4 - 3</option>
+                  <option name="formation" value="3-2-2-3">3 - 2 -2 -3</option>
+                </select>
+              </div>
+              <div class="drop-field" data-position="3-4-3">
+                <div class="drop_position" id="gol"><p class="drop">+</p></div>
+                <div class="drop_position" id="def-1">
+                  <p class="drop">+</p>
+                </div>
+                <div draggable="true" class="drop_position" id="def-2">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="def-3">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="mei-1">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="mei-2">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="mei-3">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="mei-4">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="atk-1">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="atk-2">
+                  <p class="drag">+</p>
+                </div>
+                <div class="drop_position" id="atk-3">
+                  <p class="drag">+</p>
+                </div>
+              </div>
+              <button type="submit" class="btn-save">Enviar</button>
+            </div>
+            <div>
+              <div class="Search-container">
+                <label>Search player</label>
+                <input
+                  class="search-Players"
+                  type="text"
+                  id="search-Players"
+                  alt="search-Players"
+                />
+              </div>
+              <div class="search-container">
+                <ul class="drag-players">
+                  <div class="drag-player">
+                    <li>Name: <span>Cristiano ronado</span></li>
+                    <li>Name: <span>Cristiano ronado</span></li>
+                  </div>
+                  <div class="drag-player">
+                    <li>Name: <span>Cristiano ronado</span></li>
+                    <li>Name: <span>Cristiano ronado</span></li>
+                  </div>
+                  <div class="drag-player">
+                    <li>Name: <span>Cristiano ronado</span></li>
+                    <li>Name: <span>Cristiano ronado</span></li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <button
-          type="submit"
-          class="btn-modal btn-save"
-          style="width: 400px; display: block; margin: 0 0 0 180px;"
-          
-        >
-          Enviar
-        </button>
+        <div class="save-container"></div>
       </div>
     </section>
     <footer class="footer">
