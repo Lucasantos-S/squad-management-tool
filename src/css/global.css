@@ -98,6 +98,7 @@ label, h3 {
   font-size: 1rem;
   font-weight: bolder;
   margin-bottom: 10px;
+
 }
 
 .header {
@@ -378,6 +379,12 @@ label, h3 {
   text-align: center;
   z-index: 1000;
 
+}
+
+.redondo {
+  border-radius: 50% !important;
+  width: 30px;
+  height: 30px;
 }
 
 
