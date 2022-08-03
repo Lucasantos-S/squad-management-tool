@@ -1,0 +1,96 @@
+
+[data-position="3-4-3"] #gol {
+    display: block;
+    bottom: 30px;
+    left: 170px;
+}
+[data-position="3-4-3"] #def-1{ 
+    bottom: 150px;
+    left: 30px;
+}
+ [data-position="3-4-3"] #def-2{
+    bottom: 150px;
+    left: 170px;
+}
+[data-position="3-4-3"] #def-3{
+    bottom: 150px;
+    left: 300px;
+} 
+[data-position="3-4-3"] #mei-1{ 
+    bottom: 270px;
+    left: 30px;
+}
+[data-position="3-4-3"] #mei-2{ 
+    bottom: 270px;
+    left: 170px;
+}
+[data-position="3-4-3"] #mei-3{
+    bottom: 270px;
+    left: 300px;
+} 
+[data-position="3-4-3"] #mei-4{ 
+    bottom: 400px;
+    left: 170px;
+}
+
+[data-position="3-4-3"] #atk-1{ 
+    bottom: 500px;
+    left: 30px;
+}
+[data-position="3-4-3"] #atk-2{ 
+    bottom: 500px;
+    left: 170px;
+}
+[data-position="3-4-3"] #atk-3{ 
+    bottom: 500px;
+    left: 300px;
+}
+
+
+/*         3-2-3-1     */
+[data-position="3-2-2-3"] #gol {
+    display: block;
+    bottom: 30px;
+    left: 170px;
+}
+[data-position="3-2-2-3"] #def-1{ 
+    bottom: 150px;
+    left: 30px;
+}
+ [data-position="3-2-2-3"] #def-2{
+    bottom: 150px;
+    left: 170px;
+}
+[data-position="3-2-2-3"] #def-3{
+    bottom: 150px;
+    left: 300px;
+} 
+[data-position="3-2-2-3"] #mei-1{ 
+    bottom: 270px;
+    left: 120px;
+}
+[data-position="3-2-2-3"] #mei-2{ 
+    bottom: 270px;
+    left: 220px;
+}
+[data-position="3-2-2-3"] #mei-3{
+    bottom: 400px;
+    left: 120px;
+} 
+[data-position="3-2-2-3"] #mei-4{ 
+    bottom: 400px;
+    left: 220px;
+}
+
+[data-position="3-2-2-3"] #atk-1{ 
+    bottom: 500px;
+    left: 30px;
+}
+[data-position="3-2-2-3"] #atk-2{ 
+    bottom: 500px;
+    left: 170px;
+}
+[data-position="3-2-2-3"] #atk-3{ 
+    bottom: 500px;
+    left: 300px;
+}
