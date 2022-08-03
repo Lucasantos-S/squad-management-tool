@@ -2,15 +2,14 @@
 const buttonModal = document.querySelector(".btn-modal");
 const modalContainer = document.querySelector(".modal-container");
 
-
 /* apos clicar e adicionado a class active no modal-container*/
 const activeModal = () => modalContainer.classList.add("active");
 
 /* um if verificando se o clique esta sendo no modal container*/
 const removeActive = (event) => {
-  if(modalContainer === event.target){
-    modalContainer.classList.remove("active")
-    document.getElementById("name").dataset.index = 'new'
+  if (modalContainer === event.target) {
+    modalContainer.classList.remove("active");
+    document.getElementById("name").dataset.index = "new";
   }
   modalContainer === event.target ? ClearInput() : null;
 };
@@ -18,7 +17,7 @@ const removeActive = (event) => {
 const closeModal = () => modalContainer.classList.remove("active");
 
 /************************************************************************************************************** */
-                            /*SALVANDO OS INPUT NO LOCAL STOTAGE*/ 
+/*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
 const btnSave = document.querySelector(".btn-save");
 
@@ -41,7 +40,6 @@ const deletDbTeam = (index) => {
   dbteam.splice(index, 1);
   setLocalStogae(dbteam);
 };
-
 
 /* cria o time, pega o objeto verificado no getLocalStotage, manda com o push para o array que vai estar vazio, depois envia no setLocalStogae que da um set no localStorage, passando o teams, e o objeto dentro de um array*/
 
@@ -66,21 +64,19 @@ const ClearInput = () => {
   textarea.value = "";
 };
 
-
 /* acrescentar os valores em um objeto */
 const saveTheTeam = () => {
   if (validateInput()) {
     const team = {
-      name:document.getElementById('name').value,
+      name: document.getElementById("name").value,
       description: document.getElementById("description").value,
       website: document.getElementById("website").value,
-      player: jogadores(),
-    }
+      player: array,
+    };
     const index = document.getElementById("name").dataset.index;
-    if(index == "new") {
+    if (index == "new") {
       creatTeam(team);
       includeTeamTable();
-      includeList();
       ClearInput();
       closeModal();
     } else {
@@ -88,7 +84,7 @@ const saveTheTeam = () => {
       includeTeamTable();
       closeModal();
       ClearInput();
-      document.getElementById("name").dataset.index = 'new'
+      document.getElementById("name").dataset.index = "new";
     }
   }
 };
@@ -99,7 +95,6 @@ const includeTeamTable = () => {
   const dbTeam = getLocalStotage();
   const creatTeam = dbTeam.reduce(
     (accumulator, { name, description }, index) => {
-     
       return (accumulator += `
         <tr>
           <td>${name}</td>
@@ -124,8 +119,6 @@ const includeTeamTable = () => {
 
 includeTeamTable();
 
-
-
 /* apagando as linhas antes de incluir a proxima*/
 const clearTable = () => {
   const rows = document.querySelectorAll(".records table tr");
@@ -137,7 +130,7 @@ const fillFilds = (team) => {
   document.getElementById("description").value = team.description;
   document.getElementById("website").value = team.website;
   document.getElementById("name").dataset.index = team.index;
-  document.querySelector('[data-position]').dataset.position = '3-4-3'
+  document.querySelector("[data-position]").dataset.position = "3-4-3";
 };
 
 ///editar e deletar um time da tabela
@@ -149,27 +142,29 @@ const editTeam = (index) => {
   activeModal();
 };
 
-
 ///deletar ou editar o array do db, passando o index
 
 const editDelete = ({ target }) => {
   const [action, index] = target.id.split("-");
   if (action == "delet") {
     //const team = getLocalStotage()
-    deletDbTeam(index)
-    updateTeam()
-    includeTeamTable()
-    includeList()
+    deletDbTeam(index);
+    updateTeam();
+    includeTeamTable();
   } else if (action == "share") {
     console.log("compartilhar");
-  } else if (action == "edit"){
-    editTeam(index)
-  } else{
+  } else if (action == "edit") {
+    editTeam(index);
+  } else {
   }
 };
 
 /*events */
-buttonModal.addEventListener("click", activeModal);
+
+["touchstart", "click"].forEach(event => {
+  buttonModal.addEventListener(event, activeModal);
+})
+
 modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
@@ -183,7 +178,7 @@ document.querySelector(".records>tbody").addEventListener("click", editDelete);
 //     }, 0);
 //     const ageFormate = age.toFixed(1);
 //     array.push(ageFormate)
-    
+
 //     accumulator += `
 //         <li>
 //           ${name}
@@ -206,77 +201,68 @@ document.querySelector(".records>tbody").addEventListener("click", editDelete);
 //           return highest
 //         }
 //     })
-    
+
 // };
 
 // includeList();
 
-const jogadores = () => {
-  const jogadores = [
-    {
-      nome: "ronal",
-      age: 35,
-      pais: "brasil",
-    },
-    {
-      nome: "neymar",
-      age: 25,
-      pais: "brasil",
-    },
-    {
-      nome: "zidane",
-      age: 50,
-      pais: "brasil",
-    },
-    {
-      nome: "cafu",
-      age: 20,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 19,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 32,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 20,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 47,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 32,
-      pais: "brasil",
-    },
-    {
-      nome: "zagalo",
-      age: 40,
-      pais: "brasil",
-    },
-  ];
-  return jogadores;
-};
-
-
-
-
-
 
 /*  atualiza o campo do jogador de acordo com a formação */
 
-const position = document.querySelector('[data-position]')
+const position = document.querySelector("[data-position]");
 
-const handlePosition = ({target}) => position.dataset.position = target.value
+const handlePosition = ({ target }) =>
+  (position.dataset.position = target.value);
+
+document.querySelector(".formation").addEventListener("change", handlePosition);
+
+/*               Drag and drop */
+
+const dragItems = document.querySelectorAll(".drag-player");
+const dropItems = document.querySelectorAll(".drop_position");
 
 
-document.querySelector('.formation').addEventListener('change', handlePosition)
+dragItems.forEach((item) => {
+  item.addEventListener("dragstart", dragStart);
+});
+
+//drop evenets
+
+dropItems.forEach(box => {
+    box.addEventListener('dragover', dragOver)
+    box.addEventListener('drop', dropEvent)
+    box.addEventListener('dragleave', dragLeave)
+})
+const array = []
+function dragStart(event) {
+  array.push( event.target.innerText.split(' '))
+  event.dataTransfer.setData('text/plain', event.target.innerText.split('')[6])
+
+  console.log(array)
+
+
+  setTimeout(() => {
+    this.className = "invisibol";
+  }, 0);
+}
+
+function dragOver(event){
+  event.preventDefault()
+  this.classList.add('enter')
+}
+
+function dropEvent(event){
+   event.preventDefault()
+   const namePlayer = document.createElement('p');
+   namePlayer.className = 'drop'
+   namePlayer.innerHTML = event.dataTransfer.getData('text')
+
+   this.append(namePlayer)
+   this.classList.remove('enter') 
+  
+}
+
+function dragLeave(event) {
+  event.preventDefault()
+  this.classList.remove('enter') 
+}

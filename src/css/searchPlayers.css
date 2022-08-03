@@ -35,3 +35,11 @@
 .drag-player li span {
   color: rgba(252, 0, 0, 0.719);
 }
+
+.invisibol{
+    display: none;
+}
+
+.enter{
+    border: dashed 3px #bbb;
+}
