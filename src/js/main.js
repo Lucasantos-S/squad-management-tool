@@ -174,6 +174,15 @@ document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
 /* ----------- fectch api player ----------- */
 
+const  getPlayerApi = async (event) => {
+  console.log(event)
+      const response = await fetch(``)
+}
+
+document.getElementById('search-Players').addEventListener('keyup', ({target})=> {
+    target.value.length > 2 ? getPlayerApi(target.value) : null
+})
+
 
 /*  atualiza o campo do jogador de acordo com a formação */
 
