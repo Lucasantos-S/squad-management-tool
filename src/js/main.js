@@ -169,42 +169,19 @@ modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
-// const includeList = () => {
-//   const dbTeam = getLocalStotage();
-//   let array = []
-//   const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
-//     const age = player.reduce((accumulator, { age }) => {
-//       return accumulator + age / 11;
-//     }, 0);
-//     const ageFormate = age.toFixed(1);
-//     array.push(ageFormate)
 
-//     accumulator += `
-//         <li>
-//           ${name}
-//           <span>
-//           ${ageFormate}
-//           </span>
-//         </li>`.replace(/,/g, "");
-//     return accumulator;
-//   }, "");
-//   const listContend = document.querySelector(".highest-age")
-//     listContend.innerHTML = creatListRank
-//   console.log(array)
-//   const sorted = array.sort((a,b) => {
-//     return a - b;
-//     }).reverse()
-//     console.log(sorted);
 
-//     const top5 = sorted.filter((highest, index) => {
-//         if(index < 4) {
-//           return highest
-//         }
-//     })
+/*        fetch plauer api */
 
-// };
 
-// includeList();
+
+
+
+
+
+
+
+
 
 
 /*  atualiza o campo do jogador de acordo com a formação */
@@ -215,6 +192,7 @@ const handlePosition = ({ target }) =>
   (position.dataset.position = target.value);
 
 document.querySelector(".formation").addEventListener("change", handlePosition);
+
 
 /*               Drag and drop */
 
@@ -266,3 +244,45 @@ function dragLeave(event) {
   event.preventDefault()
   this.classList.remove('enter') 
 }
+
+
+
+
+
+
+// const includeList = () => {
+//   const dbTeam = getLocalStotage();
+//   let array = []
+//   const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
+//     const age = player.reduce((accumulator, { age }) => {
+//       return accumulator + age / 11;
+//     }, 0);
+//     const ageFormate = age.toFixed(1);
+//     array.push(ageFormate)
+
+//     accumulator += `
+//         <li>
+//           ${name}
+//           <span>
+//           ${ageFormate}
+//           </span>
+//         </li>`.replace(/,/g, "");
+//     return accumulator;
+//   }, "");
+//   const listContend = document.querySelector(".highest-age")
+//     listContend.innerHTML = creatListRank
+//   console.log(array)
+//   const sorted = array.sort((a,b) => {
+//     return a - b;
+//     }).reverse()
+//     console.log(sorted);
+
+//     const top5 = sorted.filter((highest, index) => {
+//         if(index < 4) {
+//           return highest
+//         }
+//     })
+
+// };
+
+// includeList();
