@@ -164,10 +164,76 @@ const editDelete = ({ target }) => {
 ["touchstart", "click"].forEach(event => {
   buttonModal.addEventListener(event, activeModal);
 })
-
 modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
+
+
+
+
+
+/* ----------- fectch api player ----------- */
+
+
+/*  atualiza o campo do jogador de acordo com a formação */
+
+const position = document.querySelector("[data-position]");
+
+const handlePosition = ({ target }) =>
+  (position.dataset.position = target.value);
+
+document.querySelector(".formation").addEventListener("change", handlePosition);
+
+
+/*------------------Drag and drop --------------------*/
+
+const dragItems = document.querySelectorAll(".drag-player");
+const dropItems = document.querySelectorAll(".drop_position");
+
+dragItems.forEach((item) => {
+  item.addEventListener("dragstart", dragStart);
+});
+
+//drop evenets
+
+dropItems.forEach(box => {
+    box.addEventListener('dragover', dragOver)
+    box.addEventListener('drop', dropEvent)
+    box.addEventListener('dragleave', dragLeave)
+})
+const array = []
+function dragStart(event) {
+  array.push( event.target.innerText.split(' '))
+  event.dataTransfer.setData('text/plain', event.target.innerText.split('')[6])
+
+  setTimeout(() => {
+    this.className = "invisibol";
+  }, 0);
+}
+
+function dragOver(event){
+  event.preventDefault()
+  this.classList.add('enter')
+}
+
+function dropEvent(event){
+   event.preventDefault()
+   const namePlayer = document.createElement('p');
+   namePlayer.className = 'drop'
+   namePlayer.innerHTML = event.dataTransfer.getData('text')
+
+   this.append(namePlayer)
+   this.classList.remove('enter') 
+  
+}
+
+function dragLeave(event) {
+  event.preventDefault()
+  this.classList.remove('enter') 
+}
+
+/*--------------------------------- */
+
 
 
 
@@ -208,64 +274,3 @@ document.querySelector(".records>tbody").addEventListener("click", editDelete);
 // };
 
 // includeList();
-
-
-/*  atualiza o campo do jogador de acordo com a formação */
-
-const position = document.querySelector("[data-position]");
-
-const handlePosition = ({ target }) =>
-  (position.dataset.position = target.value);
-
-document.querySelector(".formation").addEventListener("change", handlePosition);
-
-/*               Drag and drop */
-
-const dragItems = document.querySelectorAll(".drag-player");
-const dropItems = document.querySelectorAll(".drop_position");
-
-
-dragItems.forEach((item) => {
-  item.addEventListener("dragstart", dragStart);
-});
-
-//drop evenets
-
-dropItems.forEach(box => {
-    box.addEventListener('dragover', dragOver)
-    box.addEventListener('drop', dropEvent)
-    box.addEventListener('dragleave', dragLeave)
-})
-const array = []
-function dragStart(event) {
-  array.push( event.target.innerText.split(' '))
-  event.dataTransfer.setData('text/plain', event.target.innerText.split('')[6])
-
-  console.log(array)
-
-
-  setTimeout(() => {
-    this.className = "invisibol";
-  }, 0);
-}
-
-function dragOver(event){
-  event.preventDefault()
-  this.classList.add('enter')
-}
-
-function dropEvent(event){
-   event.preventDefault()
-   const namePlayer = document.createElement('p');
-   namePlayer.className = 'drop'
-   namePlayer.innerHTML = event.dataTransfer.getData('text')
-
-   this.append(namePlayer)
-   this.classList.remove('enter') 
-  
-}
-
-function dragLeave(event) {
-  event.preventDefault()
-  this.classList.remove('enter') 
-}
