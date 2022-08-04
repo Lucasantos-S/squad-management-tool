@@ -73,7 +73,7 @@ const saveTheTeam = () => {
       website: document.getElementById("website").value,
       player: [
 
-      ],
+      ]
     };
     const index = document.getElementById("name").dataset.index;
     if (index == "new") {
@@ -264,20 +264,9 @@ dropItems.forEach((box) => {
 });
 
 
-const arrayExemplo = ['name: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37', ['Nome: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37']]
 
-const arrayEsperada =[
-  {
-  name: 'Cristiano Ronaldo',
-  Nationality: 'Portugal',
-  Age: 37
-}]
-
-console.log(arrayExemplo)
-console.log(arrayEsperada);
 
 const arrayPlayer  = []
-
 
 function dragStart(event) {
   arrayPlayer.push(event.target.innerText.split('\n'))
