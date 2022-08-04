@@ -71,7 +71,9 @@ const saveTheTeam = () => {
       name: document.getElementById("name").value,
       description: document.getElementById("description").value,
       website: document.getElementById("website").value,
-      player: array,
+      player: [
+
+      ],
     };
     const index = document.getElementById("name").dataset.index;
     if (index == "new") {
@@ -213,7 +215,7 @@ function removeTag(index) {
   const array = player.map(({ name, age , nationality, id}) => {
     return `
     <div class="drag-player" draggable="true" data-player="${name}-${nationality}-${age}-${id}">
-      <li id="${name}" > Nome: <span >${name } </span> </li>
+      <li > Nome: <span >${name } </span> </li>
       <li> Nationality: <span>${ nationality } </span></li>
       <li class="age"> Age: <span>${age} </span></li>
     </div>
@@ -261,21 +263,31 @@ dropItems.forEach((box) => {
   box.addEventListener("dragleave", dragLeave);
 });
 
-function playerArray (value =[]){
-    console.log(value)
-}
 
-playerArray()
+const arrayExemplo = ['name: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37', ['Nome: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37']]
+
+const arrayEsperada =[
+  {
+  name: 'Cristiano Ronaldo',
+  Nationality: 'Portugal',
+  Age: 37
+}]
+
+console.log(arrayExemplo)
+console.log(arrayEsperada);
+
+const arrayPlayer  = []
+
+
 function dragStart(event) {
-  const arrayPlayer=  event.target.dataset.player.split('-')
-  playerArray(arrayPlayer)
+  arrayPlayer.push(event.target.innerText.split('\n'))
   event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
 
-
-  const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
-  const novo = nomePlay.forEach(r => {
-    return r.slice(0,1)
-  })
+  console.log(arrayPlayer)
+  // const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
+  // const novo = nomePlay.forEach(r => {
+  //   return r.slice(0,1)
+  // })
 
   setTimeout(() => {
     this.className = "invisibol";
