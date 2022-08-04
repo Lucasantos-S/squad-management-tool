@@ -1,0 +1,56 @@
+.tag-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.tag-container h3 {
+}
+
+.tag-content{
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    background-color: #fff;
+    overflow: auto;
+    max-width: 50vh; 
+    box-shadow: 0 1px 2px #000;
+    margin: auto 5px;
+}
+
+.contend::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgba(0, 0,0, 0.2) ;
+}
+
+.tag-content ul {
+    flex-wrap: wrap;
+}
+.tag-content ul li{
+    list-style: none;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 3px;
+    float: left;
+}
+
+.tag-content input{
+    outline: none;
+    border: none;
+    height: 30px;
+    margin-left: 5px;
+    background-color: #efefef;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 3px;  
+    max-width: 100px;
+}
+
+.tag-content button {
+    border-radius: 50%;
+    padding: 0 3px;
+    border: none;
+    cursor: pointer;
+    background-color: #ddd;
+}

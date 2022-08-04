@@ -104,7 +104,7 @@ label, h3 {
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 50px;
+  padding: 0px 60px;
   background-image: linear-gradient(to right, #e31a6a, #a62178);
 }
 
@@ -121,8 +121,8 @@ label, h3 {
 }
 
 .logo img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 }
 .logo h1 {
   font-size: 2rem;
@@ -162,7 +162,7 @@ label, h3 {
 
 /*grid container*/
 .container {
-  max-width: 1600px;
+  max-width: 1360px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -174,10 +174,9 @@ label, h3 {
   grid-template-areas:
     "myteams ranking"
     "myteams picked";
- 
-  height: 85vh;
-  padding-top: 40px;
+  padding: 40px 60px 0 40px;
   z-index: 0;
+  height: 835px;
  
 }
 .my-teams {
@@ -372,19 +371,13 @@ label, h3 {
 
 
 /*foooter*/
+
+
 .footer {
- 
-  padding-top: 20px;
+ padding: 10px;
   background: #d8d5d8;
   text-align: center;
   z-index: 1000;
-
-}
-
-.redondo {
-  border-radius: 50% !important;
-  width: 30px;
-  height: 30px;
 }
 
 

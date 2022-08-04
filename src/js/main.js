@@ -161,28 +161,84 @@ const editDelete = ({ target }) => {
 
 /*events */
 
-["touchstart", "click"].forEach(event => {
+["touchstart", "click"].forEach((event) => {
   buttonModal.addEventListener(event, activeModal);
-})
+});
 modalContainer.addEventListener("click", removeActive);
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
+/*----------------- tag ---------------- */
 
+const ul = document.getElementById("tag-ul");
+const li = document.getElementById("input-tag");
+const tagList = [];
 
+li.addEventListener("keydown", (event) => {
+  if (event.code.includes("Enter") && event.target.value) {
+    tagList.push(event.target.value);
+    document.getElementById("input-tag").value = "";
+    event.preventDefault();
+    addTagName();
+  }
+});
 
+const addTagName = (event) => {
+  
+  ul.innerHTML = "";
+  tagList.forEach((item, index) => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <div>
+        <span>${item}</span>
+        <button class="btn-remove-Tag" onClick="removeTag(${index})">x</button>
+      </div>
+    `;
+    ul.appendChild(li);
+  });
+};
+
+function removeTag(index) {
+  tagList.splice(index, 1);
+  addTagName();
+}
 
 /* ----------- fectch api player ----------- */
 
-const  getPlayerApi = async (event) => {
-  console.log(event)
-      const response = await fetch(``)
-}
 
-document.getElementById('search-Players').addEventListener('keyup', ({target})=> {
-    target.value.length > 2 ? getPlayerApi(target.value) : null
-})
 
+  const responsPlay = (player) => {
+  const playerList = document.querySelector(".drag-players");
+  const array = player.map(({ name, age , nationality, id}) => {
+    return `
+    <div class="drag-player" draggable="true" data-player="${name}-${nationality}-${age}-${id}">
+      <li id="${name}" > Nome: <span >${name } </span> </li>
+      <li> Nationality: <span>${ nationality } </span></li>
+      <li class="age"> Age: <span>${age} </span></li>
+    </div>
+    `;
+  });
+  playerList.innerHTML = array;
+  const dragItems = document.querySelectorAll(".drag-player");
+  dragItems.forEach((item) => {
+    item.addEventListener("dragstart", dragStart);
+  });
+};
+
+const getPlayerApi = async (event) => {
+  const response = await fetch(
+    `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${event}`
+  );
+  const json = await response.json();
+  responsPlay(json);
+};
+
+document
+  .getElementById("search-Players")
+  .addEventListener("keyup", ({ target }) => {
+    target.value.length > 1 ? getPlayerApi(target.value) : null;
+  });
 
 /*  atualiza o campo do jogador de acordo com a formação */
 
@@ -193,59 +249,61 @@ const handlePosition = ({ target }) =>
 
 document.querySelector(".formation").addEventListener("change", handlePosition);
 
-
 /*------------------Drag and drop --------------------*/
 
-const dragItems = document.querySelectorAll(".drag-player");
 const dropItems = document.querySelectorAll(".drop_position");
-
-dragItems.forEach((item) => {
-  item.addEventListener("dragstart", dragStart);
-});
 
 //drop evenets
 
-dropItems.forEach(box => {
-    box.addEventListener('dragover', dragOver)
-    box.addEventListener('drop', dropEvent)
-    box.addEventListener('dragleave', dragLeave)
-})
-const array = []
+dropItems.forEach((box) => {
+  box.addEventListener("dragover", dragOver);
+  box.addEventListener("drop", dropEvent);
+  box.addEventListener("dragleave", dragLeave);
+});
+
+function playerArray (value =[]){
+    console.log(value)
+}
+
+playerArray()
 function dragStart(event) {
-  array.push( event.target.innerText.split(' '))
-  event.dataTransfer.setData('text/plain', event.target.innerText.split('')[6])
+  const arrayPlayer=  event.target.dataset.player.split('-')
+  playerArray(arrayPlayer)
+  event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
+
+
+  const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
+  const novo = nomePlay.forEach(r => {
+    return r.slice(0,1)
+  })
 
   setTimeout(() => {
     this.className = "invisibol";
   }, 0);
 }
 
-function dragOver(event){
-  event.preventDefault()
-  this.classList.add('enter')
+
+function dragOver(event) {
+  event.preventDefault();
+  this.classList.add("enter");
 }
 
-function dropEvent(event){
-   event.preventDefault()
-   const namePlayer = document.createElement('p');
-   namePlayer.className = 'drop'
-   namePlayer.innerHTML = event.dataTransfer.getData('text')
+function dropEvent(event) {
+  event.preventDefault();
+  const namePlayer = document.createElement("p");
+  namePlayer.className = "drop";
+  namePlayer.innerHTML = event.dataTransfer.getData("text");
 
-   this.append(namePlayer)
-   this.classList.remove('enter') 
-  
+  this.append(namePlayer);
+  this.classList.remove("enter");
 }
 
 function dragLeave(event) {
-  event.preventDefault()
-  this.classList.remove('enter') 
+  event.preventDefault();
+  this.classList.remove("enter");
 }
 
 /*--------------------------------- */
-
-
-
-
 
 // const includeList = () => {
 //   const dbTeam = getLocalStotage();
