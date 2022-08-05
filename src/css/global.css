@@ -283,21 +283,24 @@ label, h3 {
   padding-left: 40px;
   cursor: pointer;
   border: none;
+  border-radius: 5px;
 }
 
 .records tr:hover {
   background: #eee7ee;
+  
 }
 
 .btn-crud {
   display: flex;
   justify-content: end;
+
 }
 .btn-crud button {
   display: block;
   z-index: 1000;
-  width: 3rem;
-  margin: 0 10px;
+  width: 0.7rem;
+  padding-right: 30px;
   background: none;
   border: none;
   cursor: pointer; 
@@ -357,13 +360,18 @@ label, h3 {
   border-radius: 10px 10px 0 0;
   display: flex;
   justify-content: space-between;
-  padding: 100px;
+  padding-top: 40px;
 }
 
-.most h1,
-.less h1 {
+.most,
+.less{
+  width: 100%;
+}
+
+.most h3,
+.less h3 {
   font-family: var(--font);
-  font-size: 2.5rem;
+  font-size: 1.4rem;
   color: #fff;
   text-align: center;
   font-weight: bolder;

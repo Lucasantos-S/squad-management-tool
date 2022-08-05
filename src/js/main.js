@@ -264,26 +264,12 @@ dropItems.forEach((box) => {
 });
 
 
-const arrayExemplo = ['name: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37', ['Nome: Cristiano Ronaldo', 'Nationality: Portugal', 'Age: 37']]
-
-const arrayEsperada =[
-  {
-  name: 'Cristiano Ronaldo',
-  Nationality: 'Portugal',
-  Age: 37
-}]
-
-console.log(arrayExemplo)
-console.log(arrayEsperada);
-
 const arrayPlayer  = []
-
 
 function dragStart(event) {
   arrayPlayer.push(event.target.innerText.split('\n'))
   event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
 
-  console.log(arrayPlayer)
   // const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
   // const novo = nomePlay.forEach(r => {
   //   return r.slice(0,1)
