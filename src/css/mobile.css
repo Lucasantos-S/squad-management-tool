@@ -4,4 +4,8 @@
    flex-direction: column;
    gap: 10px;
 }
+
+.modal-container {
+padding: 90px 25px 40px 25px;
+}
 }
