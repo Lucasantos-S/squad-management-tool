@@ -30,4 +30,3 @@ function removeTag(index) {
   tagList.splice(index, 1);
   addTagName();
 }
-removeTag()
