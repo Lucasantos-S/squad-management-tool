@@ -1,6 +1,5 @@
 import { activeModal, closeModal } from "./modules/modal.js"
 import { addTagName, tagList} from "./modules/tag.js";
-activeModal();
 addTagName();
 
 
@@ -151,11 +150,6 @@ const editDelete = ({ target }) => {
 };
 
 /*events */
-
-["touchstart", "click"].forEach((event) => {
-  buttonModal.addEventListener(event, activeModal);
-});
-
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
