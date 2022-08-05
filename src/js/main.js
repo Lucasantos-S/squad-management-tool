@@ -1,8 +1,7 @@
-import { activeModal, closeModal } from "./modules/modal.js"
-import { addTagName, tagList} from "./modules/tag.js";
-addTagName();
-
-
+import { activeModal, closeModal } from "./modules/modal.js";
+import { tagList } from "./modules/tag.js";
+import "./modules/playerField.js";
+import { formationTeam } from "./modules/formation.js";
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
@@ -58,10 +57,9 @@ const saveTheTeam = () => {
       name: document.getElementById("name").value,
       description: document.getElementById("description").value,
       website: document.getElementById("website").value,
-      player: [
-
-      ],
-      teamTag: tagList
+      player: [],
+      tagList: tagList,
+      formation: formationTeam,
     };
     const index = document.getElementById("name").dataset.index;
     if (index == "new") {
@@ -129,7 +127,7 @@ const editTeam = (index) => {
   const team = getLocalStotage()[index];
   team.index = index;
   fillFilds(team);
-  activeModal()
+  activeModal();
 };
 
 ///deletar ou editar o array do db, passando o index
@@ -152,106 +150,6 @@ const editDelete = ({ target }) => {
 /*events */
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
-
-/*----------------- tag ---------------- */
-
-
-/* ----------- fectch api player ----------- */
-
-
-
-  const responsPlay = (player) => {
-  const playerList = document.querySelector(".drag-players");
-  const array = player.map(({ name, age , nationality, id}) => {
-    return `
-    <div class="drag-player" draggable="true" data-player="${name}-${nationality}-${age}-${id}">
-      <li > Nome: <span >${name } </span> </li>
-      <li> Nationality: <span>${ nationality } </span></li>
-      <li class="age"> Age: <span>${age} </span></li>
-    </div>
-    `;
-  });
-  playerList.innerHTML = array;
-  const dragItems = document.querySelectorAll(".drag-player");
-  dragItems.forEach((item) => {
-    item.addEventListener("dragstart", dragStart);
-  });
-};
-
-const getPlayerApi = async (event) => {
-  const response = await fetch(
-    `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${event}`
-  );
-  const json = await response.json();
-  responsPlay(json);
-};
-
-document
-  .getElementById("search-Players")
-  .addEventListener("keyup", ({ target }) => {
-    target.value.length > 1 ? getPlayerApi(target.value) : null;
-  });
-
-/*  atualiza o campo do jogador de acordo com a formação */
-
-const position = document.querySelector("[data-position]");
-
-const handlePosition = ({ target }) =>
-  (position.dataset.position = target.value);
-
-document.querySelector(".formation").addEventListener("change", handlePosition);
-
-/*------------------Drag and drop --------------------*/
-
-const dropItems = document.querySelectorAll(".drop_position");
-
-//drop evenets
-
-dropItems.forEach((box) => {
-  box.addEventListener("dragover", dragOver);
-  box.addEventListener("drop", dropEvent);
-  box.addEventListener("dragleave", dragLeave);
-});
-
-
-const arrayPlayer  = []
-
-function dragStart(event) {
-  arrayPlayer.push(event.target.innerText.split('\n'))
-  event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
-
-  // const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
-  // const novo = nomePlay.forEach(r => {
-  //   return r.slice(0,1)
-  // })
-
-  setTimeout(() => {
-    this.className = "invisibol";
-  }, 0);
-}
-
-
-function dragOver(event) {
-  event.preventDefault();
-  this.classList.add("enter");
-}
-
-function dropEvent(event) {
-  event.preventDefault();
-  const namePlayer = document.createElement("p");
-  namePlayer.className = "drop";
-  namePlayer.innerHTML = event.dataTransfer.getData("text");
-
-  this.append(namePlayer);
-  this.classList.remove("enter");
-}
-
-function dragLeave(event) {
-  event.preventDefault();
-  this.classList.remove("enter");
-}
-
-/*--------------------------------- */
 
 // const includeList = () => {
 //   const dbTeam = getLocalStotage();
