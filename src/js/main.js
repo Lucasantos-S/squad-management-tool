@@ -1,22 +1,10 @@
-/* ativando o modal apos o click no botão*/
-const buttonModal = document.querySelector(".btn-modal");
-const modalContainer = document.querySelector(".modal-container");
+import { activeModal, closeModal } from "./modules/modal.js"
+import { addTagName, tagList} from "./modules/tag.js";
+activeModal();
+addTagName();
 
-/* apos clicar e adicionado a class active no modal-container*/
-const activeModal = () => modalContainer.classList.add("active");
 
-/* um if verificando se o clique esta sendo no modal container*/
-const removeActive = (event) => {
-  if (modalContainer === event.target) {
-    modalContainer.classList.remove("active");
-    document.getElementById("name").dataset.index = "new";
-  }
-  modalContainer === event.target ? ClearInput() : null;
-};
 
-const closeModal = () => modalContainer.classList.remove("active");
-
-/************************************************************************************************************** */
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
 const btnSave = document.querySelector(".btn-save");
@@ -55,7 +43,7 @@ const validateInput = () => {
 };
 
 /* limpar os campos */
-const ClearInput = () => {
+export const ClearInput = () => {
   const inputs = document.querySelectorAll("#form input");
   const textarea = document.querySelector("#description");
   inputs.forEach((input) => {
@@ -74,6 +62,7 @@ const saveTheTeam = () => {
       player: [
 
       ],
+      teamTag: tagList
     };
     const index = document.getElementById("name").dataset.index;
     if (index == "new") {
@@ -141,7 +130,7 @@ const editTeam = (index) => {
   const team = getLocalStotage()[index];
   team.index = index;
   fillFilds(team);
-  activeModal();
+  activeModal()
 };
 
 ///deletar ou editar o array do db, passando o index
@@ -166,45 +155,12 @@ const editDelete = ({ target }) => {
 ["touchstart", "click"].forEach((event) => {
   buttonModal.addEventListener(event, activeModal);
 });
-modalContainer.addEventListener("click", removeActive);
+
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
 /*----------------- tag ---------------- */
 
-const ul = document.getElementById("tag-ul");
-const li = document.getElementById("input-tag");
-const tagList = [];
-
-li.addEventListener("keydown", (event) => {
-  if (event.code.includes("Enter") && event.target.value) {
-    tagList.push(event.target.value);
-    document.getElementById("input-tag").value = "";
-    event.preventDefault();
-    addTagName();
-  }
-});
-
-const addTagName = (event) => {
-  
-  ul.innerHTML = "";
-  tagList.forEach((item, index) => {
-    const li = document.createElement("li");
-
-    li.innerHTML = `
-      <div>
-        <span>${item}</span>
-        <button class="btn-remove-Tag" onClick="removeTag(${index})">x</button>
-      </div>
-    `;
-    ul.appendChild(li);
-  });
-};
-
-function removeTag(index) {
-  tagList.splice(index, 1);
-  addTagName();
-}
 
 /* ----------- fectch api player ----------- */
 
