@@ -1,6 +1,6 @@
 import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
-import "./modules/playerField.js";
+import  {arrayPlayer , resetArray} from"./modules/playerField.js";
 import { formationTeam } from "./modules/formation.js";
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
@@ -37,7 +37,12 @@ const creatTeam = (team) => {
 
 /* validar os inputs */
 const validateInput = () => {
-  return document.getElementById("form").reportValidity();
+  if(arrayPlayer.length < 2){
+      alert(error)
+  }{
+      return true
+  }
+ 
 };
 
 /* limpar os campos */
@@ -57,7 +62,7 @@ const saveTheTeam = () => {
       name: document.getElementById("name").value,
       description: document.getElementById("description").value,
       website: document.getElementById("website").value,
-      player: [],
+      player: arrayPlayer,
       tagList: tagList,
       formation: formationTeam,
     };
@@ -67,6 +72,7 @@ const saveTheTeam = () => {
       includeTeamTable();
       ClearInput();
       closeModal();
+      resetArray()
     } else {
       updateTeam(index, team);
       includeTeamTable();

@@ -1,5 +1,5 @@
 import "./fetchApi.js";
-export const responsPlay = (player) => {
+export const responsePlay = (player) => {
   const playerList = document.querySelector(".drag-players");
   const array = player.map(({ name, age, nationality, id }) => {
     return `
@@ -17,32 +17,35 @@ export const responsPlay = (player) => {
   });
 };
 
-
-
-
 /*------------------Drag and drop --------------------*/
-
 const dropItems = document.querySelectorAll(".drop_position");
-
-//drop evenets
-
 dropItems.forEach((box) => {
   box.addEventListener("dragover", dragOver);
   box.addEventListener("drop", dropEvent);
   box.addEventListener("dragleave", dragLeave);
 });
 
-const arrayPlayer = [];
+export const arrayPlayer = [];
+
+function covertArray(player){
+  const arrayprimary = player.target.innerText.split("\n");
+  const teste = arrayprimary.map((r) => r.replace(" :", ",").split(":"));
+  const arrayToObj = (arr) =>
+    teste.reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+    arrayPlayer.push(arrayToObj());
+}
+
+
+export const resetArray =() => arrayPlayer.splice(0, arrayPlayer.length);
 
 function dragStart(event) {
-  arrayPlayer.push(event.target.innerText.split("\n"));
-  event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
+    covertArray(event)
+  
 
-  console.log(arrayPlayer);
-  // const nomePlay = arrayPlayer[0].replace(/[ ]+/g , ',').split(',')
-  // const novo = nomePlay.forEach(r => {
-  //   return r.slice(0,1)
-  // })
+  event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
 
   setTimeout(() => {
     this.className = "invisibol";
