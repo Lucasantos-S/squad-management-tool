@@ -1,4 +1,5 @@
 import "./fetchApi.js";
+import {covertArray} from "./dataPlayer.js";
 export const responsePlay = (player) => {
  const playerList = document.querySelector(".drag-players");
   const array = player.map(({ name, age, nationality, id }) => {
@@ -25,20 +26,7 @@ dropItems.forEach((box) => {
   box.addEventListener("dragleave", dragLeave);
 });
 
-export const arrayPlayer = [];
 
-function covertArray(player) {
-  const arrayprimary = player.target.innerText.split("\n");
-  const arrayUpdat = arrayprimary.map((r) => r.replace(" :", ",").split(":"));
-  const arrayToObj = () =>
-    arrayUpdat.reduce((acc, [key, value]) => {
-      acc[key] = value;
-      return acc;
-    }, {});
-  arrayPlayer.push(arrayToObj());
-}
-
-export const resetArray = () => arrayPlayer.splice(0, arrayPlayer.length);
 
 function dragStart(event) {
   covertArray(event);

@@ -1,17 +1,22 @@
 import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
-import  {arrayPlayer , resetArray} from"./modules/playerField";
+import "./modules/playerField.js";
 import { formationTeam } from "./modules/formation.js";
-import { validateInput} from "./modules/Validation.js";
-
+import { validateInput } from "./modules/Validation.js";
+import { arrayPlayer, resetArray, averageAge } from "./modules/dataPlayer.js";
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
 const btnSave = document.querySelector(".btn-save");
 
-const getLocalStotage = () => JSON.parse(localStorage.getItem("teams")) ?? [];
+export function getLocalStotage() {
+  return JSON.parse(localStorage.getItem("teams")) ?? [];
+}
+  
 const setLocalStogae = (dbTeam) =>
   localStorage.setItem("teams", JSON.stringify(dbTeam));
+
+
 
 /*pega o index e novo time, depois puxar o localStorage, altera o time de acordo com o index passado
 (database[numero do index] = ao novo time)
@@ -39,7 +44,6 @@ const creatTeam = (team) => {
 
 /* validar os inputs */
 
-
 /* limpar os campos */
 export const ClearInput = () => {
   const inputs = document.querySelectorAll("#form input");
@@ -60,6 +64,7 @@ const saveTheTeam = () => {
       player: arrayPlayer,
       tagList: tagList,
       formation: formationTeam,
+      teamAge: averageAge(),
     };
     const index = document.getElementById("name").dataset.index;
     if (index == "new") {
@@ -67,9 +72,7 @@ const saveTheTeam = () => {
       includeTeamTable();
       ClearInput();
       closeModal();
-      resetArray()
-      includeList();
-      
+      resetArray();
     } else {
       updateTeam(index, team);
       includeTeamTable();
@@ -138,7 +141,6 @@ const editTeam = (index) => {
 const editDelete = ({ target }) => {
   const [action, index] = target.id.split("-");
   if (action == "delet") {
-    
     deletDbTeam(index);
     updateTeam();
     includeTeamTable();
@@ -154,44 +156,3 @@ const editDelete = ({ target }) => {
 /*events */
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
-
-const includeList = () => {
-  const dbTeam = getLocalStotage();
-  let array = []
-  const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
-    const age = player.reduce((acc, r) => {
-      acc += +r.Age /11
-
-      return acc
-    },0)
-    console.log(age)
-
-    const ageFormate = age.toFixed(1);
-    array.push(ageFormate)
-
-    accumulator += `
-        <li>
-          ${name}
-          <span>
-          ${ageFormate}
-          </span>
-        </li>`.replace(/,/g, "");
-    return accumulator;
-  }, "");
-  const listContend = document.querySelector(".highest-age")
-    listContend.innerHTML = creatListRank
-  console.log(array)
-  const sorted = array.sort((a,b) => {
-    return a - b;
-    }).reverse()
-    console.log(sorted);
-
-    const top5 = sorted.filter((highest, index) => {
-        if(index < 4) {
-          return highest
-        }
-    })
-
-};
-
-

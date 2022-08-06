@@ -1,3 +1,5 @@
+import  {responsePlay} from"./playerField.js";
+
 const urlApiPlayers = `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=`;
 
 /* fectch da api  */
