@@ -10,6 +10,7 @@ export const activeModal = () => modalContainer.classList.add("active");
 export const closeModal = () => {
   modalContainer.classList.remove("active");
   document.getElementById("name").dataset.index = "new";
+  document.getElementById("name").classList.remove('erro')
   ClearInput();
 };
 document.querySelector(".close-modal").addEventListener("click", closeModal);

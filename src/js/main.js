@@ -2,7 +2,8 @@ import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
 import  {arrayPlayer , resetArray} from"./modules/playerField.js";
 import { formationTeam } from "./modules/formation.js";
-import { validateInput } from "./modules/Validation.js";
+import { validateInput} from "./modules/Validation.js";
+
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
