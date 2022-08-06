@@ -42,8 +42,9 @@ export const resetArray = () => arrayPlayer.splice(0, arrayPlayer.length);
 
 function dragStart(event) {
   covertArray(event);
-
-  event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
+  const name = event.target.innerText.split(" ").charAt(0);
+  const lastName = event.target.innerText.split(" ")[2].charAt(0);
+  event.dataTransfer.setData("text/plain", name + lastName);
 
   setTimeout(() => {
     this.className = "invisibol";
@@ -63,9 +64,7 @@ function dropEvent(event) {
   this.append(namePlayer);
   this.classList.remove("enter");
 }
-function teste(){
-  
-}
+function teste() {}
 
 function dragLeave(event) {
   event.preventDefault();
