@@ -17,9 +17,9 @@ function debounceEvent(func, wait = 1000, time) {
 }
 
 /* function que e chamada no debounce apos 500ms */
-const handleKeyUp = ({ target }) =>
-  getPlayerApi(target.value).then((player) => responsePlay(player));
+const handleKeyUp = ({ target }) => getPlayerApi(target.value).then((player) =>  responsePlay(player));
+
 
 document
   .getElementById("search-Players")
-  .addEventListener("keyup", debounceEvent(handleKeyUp, 500));
+  .addEventListener("keyup", debounceEvent(handleKeyUp, 1000));
