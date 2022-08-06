@@ -42,7 +42,7 @@ export const resetArray = () => arrayPlayer.splice(0, arrayPlayer.length);
 
 function dragStart(event) {
   covertArray(event);
-  const name = event.target.innerText.split(" ").charAt(0);
+  const name = event.target.innerText.split(" ")[1].charAt(0);
   const lastName = event.target.innerText.split(" ")[2].charAt(0);
   event.dataTransfer.setData("text/plain", name + lastName);
 
