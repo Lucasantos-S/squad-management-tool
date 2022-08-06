@@ -1,15 +1,21 @@
 import { responsePlay } from "./playerField.js";
+let time = null;
 
-export const getPlayerApi = async (event) => {
-  const response = await fetch(
-    `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${event}`
-  );
-  const json = await response.json();
-  responsePlay(json);
+const getPlayerApi = async (name) =>
+  fetch(
+    `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${name}`
+  ).then((res) => res.json());
+
+function debounceEvent(value) {
+  clearTimeout(time);
+  time = setTimeout(() => {
+    getPlayerApi(value).then((player) => responsePlay(player))
+  }, 1000);
+}
+const handleKeyUp = ({ target }) => {
+  debounceEvent(target.value);
 };
 
 document
   .getElementById("search-Players")
-  .addEventListener("keyup", ({ target }) => {
-    target.value.length > 3 ? getPlayerApi(target.value) : null;
-  });
+  .addEventListener("keyup", handleKeyUp);
