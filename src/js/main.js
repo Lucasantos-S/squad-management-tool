@@ -1,6 +1,6 @@
 import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
-import  {arrayPlayer , resetArray} from"./modules/playerField.js";
+import  {arrayPlayer , resetArray} from"./modules/dbPlayer";
 import { formationTeam } from "./modules/formation.js";
 import { validateInput} from "./modules/Validation.js";
 
