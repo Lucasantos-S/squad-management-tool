@@ -1,23 +1,25 @@
 import { responsePlay } from "./playerField.js";
 
-const getPlayerApi = async (name) =>
-  fetch(
-    `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${name}`
-  ).then((res) => res.json());
+const urlApiPlayers = `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=`;
 
-function debounceEvent() {
-  let time = null;
-  return function (value) {
+/* fectch da api  */
+const getPlayerApi = async (name) =>
+  fetch(urlApiPlayers + name).then((res) => res.json());
+
+/* chamando a function do handleKeyUp apos 500ms*/
+function debounceEvent(func, wait = 1000, time) {
+  return function () {
     clearTimeout(time);
     time = setTimeout(() => {
-      getPlayerApi(value).then((player) => responsePlay(player));
-    }, 1000);
+      func(...arguments);
+    }, wait);
   };
 }
 
-const debounce = debounceEvent();
-const handleKeyUp = ({ target }) => debounce(target.value);
+/* function que e chamada no debounce apos 500ms */
+const handleKeyUp = ({ target }) =>
+  getPlayerApi(target.value).then((player) => responsePlay(player));
 
 document
   .getElementById("search-Players")
-  .addEventListener("keyup", handleKeyUp);
+  .addEventListener("keyup", debounceEvent(handleKeyUp, 500));
