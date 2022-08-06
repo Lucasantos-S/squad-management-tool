@@ -1,6 +1,6 @@
 import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
-import  {arrayPlayer , resetArray} from"./modules/dbPlayer";
+import  {arrayPlayer , resetArray} from"./modules/playerField";
 import { formationTeam } from "./modules/formation.js";
 import { validateInput} from "./modules/Validation.js";
 
@@ -138,11 +138,11 @@ const editTeam = (index) => {
 const editDelete = ({ target }) => {
   const [action, index] = target.id.split("-");
   if (action == "delet") {
-    //const team = getLocalStotage()
+    
     deletDbTeam(index);
     updateTeam();
     includeTeamTable();
-    console.log(action);
+    console.log(index);
   } else if (action == "share") {
     console.log("compartilhar");
   } else if (action == "edit") {
