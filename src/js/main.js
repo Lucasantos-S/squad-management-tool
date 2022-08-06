@@ -37,9 +37,11 @@ const creatTeam = (team) => {
 
 /* validar os inputs */
 const validateInput = () => {
-  if(arrayPlayer.length < 2){
-      alert(error)
+  if(!document.getElementById("form").name.value){
+    document.getElementById("form").name.style.borderColor = 'red'
+    return false
   }{
+    document.getElementById("form").name.style.borderColor = '#fff'
       return true
   }
  

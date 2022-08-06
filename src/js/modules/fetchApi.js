@@ -5,7 +5,7 @@ export const getPlayerApi = async (event) => {
     `http://api.squadmanagementtoll.kinghost.net/wp-json/api/jogadores?q=${event}`
   );
   const json = await response.json();
-  responsPlay(json);
+  responsePlay(json);
 };
 
 document
