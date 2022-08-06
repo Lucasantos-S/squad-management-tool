@@ -1,12 +1,11 @@
 const nameTeam = document.getElementById("name");
-
 export const validateInput = () => {
   if (!document.getElementById("form").name.value) {
-    nameTeam.classList.add('erro')
+    nameTeam.classList.add("erro");
     return false;
-  } else{
+  } else {
     {
-      nameTeam.classList.remove('erro')
+      nameTeam.classList.remove("erro");
       return true;
     }
   }
