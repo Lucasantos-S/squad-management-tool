@@ -2,6 +2,8 @@ import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
 import  {arrayPlayer , resetArray} from"./modules/playerField.js";
 import { formationTeam } from "./modules/formation.js";
+import { validateInput} from "./modules/Validation.js";
+
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
@@ -36,16 +38,7 @@ const creatTeam = (team) => {
 };
 
 /* validar os inputs */
-const validateInput = () => {
-  if(!document.getElementById("form").name.value){
-    document.getElementById("form").name.style.borderColor = 'red'
-    return false
-  }{
-    document.getElementById("form").name.style.borderColor = '#fff'
-      return true
-  }
- 
-};
+
 
 /* limpar os campos */
 export const ClearInput = () => {
@@ -75,6 +68,8 @@ const saveTheTeam = () => {
       ClearInput();
       closeModal();
       resetArray()
+      includeList();
+      
     } else {
       updateTeam(index, team);
       includeTeamTable();
@@ -147,6 +142,7 @@ const editDelete = ({ target }) => {
     deletDbTeam(index);
     updateTeam();
     includeTeamTable();
+    console.log(action);
   } else if (action == "share") {
     console.log("compartilhar");
   } else if (action == "edit") {
@@ -159,39 +155,43 @@ const editDelete = ({ target }) => {
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
 
-// const includeList = () => {
-//   const dbTeam = getLocalStotage();
-//   let array = []
-//   const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
-//     const age = player.reduce((accumulator, { age }) => {
-//       return accumulator + age / 11;
-//     }, 0);
-//     const ageFormate = age.toFixed(1);
-//     array.push(ageFormate)
+const includeList = () => {
+  const dbTeam = getLocalStotage();
+  let array = []
+  const creatListRank = dbTeam.reduce((accumulator, { name, player }) => {
+    const age = player.reduce((acc, r) => {
+      acc += +r.Age /11
 
-//     accumulator += `
-//         <li>
-//           ${name}
-//           <span>
-//           ${ageFormate}
-//           </span>
-//         </li>`.replace(/,/g, "");
-//     return accumulator;
-//   }, "");
-//   const listContend = document.querySelector(".highest-age")
-//     listContend.innerHTML = creatListRank
-//   console.log(array)
-//   const sorted = array.sort((a,b) => {
-//     return a - b;
-//     }).reverse()
-//     console.log(sorted);
+      return acc
+    },0)
+    console.log(age)
 
-//     const top5 = sorted.filter((highest, index) => {
-//         if(index < 4) {
-//           return highest
-//         }
-//     })
+    const ageFormate = age.toFixed(1);
+    array.push(ageFormate)
 
-// };
+    accumulator += `
+        <li>
+          ${name}
+          <span>
+          ${ageFormate}
+          </span>
+        </li>`.replace(/,/g, "");
+    return accumulator;
+  }, "");
+  const listContend = document.querySelector(".highest-age")
+    listContend.innerHTML = creatListRank
+  console.log(array)
+  const sorted = array.sort((a,b) => {
+    return a - b;
+    }).reverse()
+    console.log(sorted);
 
-// includeList();
+    const top5 = sorted.filter((highest, index) => {
+        if(index < 4) {
+          return highest
+        }
+    })
+
+};
+
+
