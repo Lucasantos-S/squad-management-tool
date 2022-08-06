@@ -138,11 +138,11 @@ const editTeam = (index) => {
 const editDelete = ({ target }) => {
   const [action, index] = target.id.split("-");
   if (action == "delet") {
-    //const team = getLocalStotage()
+    
     deletDbTeam(index);
     updateTeam();
     includeTeamTable();
-    console.log(action);
+    console.log(index);
   } else if (action == "share") {
     console.log("compartilhar");
   } else if (action == "edit") {

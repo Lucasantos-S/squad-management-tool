@@ -1,6 +1,6 @@
 import "./fetchApi.js";
 export const responsePlay = (player) => {
-  const playerList = document.querySelector(".drag-players");
+ const playerList = document.querySelector(".drag-players");
   const array = player.map(({ name, age, nationality, id }) => {
     return `
       <div class="drag-player" draggable="true" data-player="${id}">
@@ -62,9 +62,6 @@ function dropEvent(event) {
   namePlayer.innerHTML = event.dataTransfer.getData("text");
   this.append(namePlayer);
   this.classList.remove("enter");
-}
-function teste(){
-  
 }
 
 function dragLeave(event) {
