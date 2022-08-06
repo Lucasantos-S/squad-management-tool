@@ -39,7 +39,6 @@ option {
   
 }
 .box-formation::before {
-  content: " ";
   font-family: FontAwesome;
   position: absolute;
   display: block;
@@ -77,8 +76,8 @@ option {
 }
 
 .drop_position p {
-  margin-top: 13px;
-  font-size: 2rem;
+  margin-top: 17px;
+  font-size: 1.4rem;
   font-weight: bolder;
   color: #fff;
   position: relative;
