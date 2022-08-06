@@ -13,3 +13,10 @@ export const closeModal = () => {
   ClearInput();
 };
 document.querySelector(".close-modal").addEventListener("click", closeModal);
+
+function teste(event) {
+  event.pageY = 0
+  console.log(event.pageY)
+}
+
+window.addEventListener("scroll", teste);

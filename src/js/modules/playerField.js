@@ -27,23 +27,21 @@ dropItems.forEach((box) => {
 
 export const arrayPlayer = [];
 
-function covertArray(player){
+function covertArray(player) {
   const arrayprimary = player.target.innerText.split("\n");
-  const teste = arrayprimary.map((r) => r.replace(" :", ",").split(":"));
-  const arrayToObj = (arr) =>
-    teste.reduce((acc, [key, value]) => {
+  const arrayUpdat = arrayprimary.map((r) => r.replace(" :", ",").split(":"));
+  const arrayToObj = () =>
+    arrayUpdat.reduce((acc, [key, value]) => {
       acc[key] = value;
       return acc;
     }, {});
-    arrayPlayer.push(arrayToObj());
+  arrayPlayer.push(arrayToObj());
 }
 
-
-export const resetArray =() => arrayPlayer.splice(0, arrayPlayer.length);
+export const resetArray = () => arrayPlayer.splice(0, arrayPlayer.length);
 
 function dragStart(event) {
-    covertArray(event)
-  
+  covertArray(event);
 
   event.dataTransfer.setData("text/plain", event.target.innerText.split("")[6]);
 
@@ -62,9 +60,11 @@ function dropEvent(event) {
   const namePlayer = document.createElement("p");
   namePlayer.className = "drop";
   namePlayer.innerHTML = event.dataTransfer.getData("text");
-
   this.append(namePlayer);
   this.classList.remove("enter");
+}
+function teste(){
+  
 }
 
 function dragLeave(event) {
