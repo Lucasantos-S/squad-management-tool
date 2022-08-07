@@ -4,6 +4,9 @@ import "./modules/playerField.js";
 import { formationTeam } from "./modules/formation.js";
 import { validateInput } from "./modules/Validation.js";
 import { arrayPlayer, resetArray, averageAge } from "./modules/dataPlayer.js";
+import { includeList } from "./modules/topFiveAge.js";
+
+
 
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
@@ -12,11 +15,9 @@ const btnSave = document.querySelector(".btn-save");
 export function getLocalStotage() {
   return JSON.parse(localStorage.getItem("teams")) ?? [];
 }
-  
+
 const setLocalStogae = (dbTeam) =>
   localStorage.setItem("teams", JSON.stringify(dbTeam));
-
-
 
 /*pega o index e novo time, depois puxar o localStorage, altera o time de acordo com o index passado
 (database[numero do index] = ao novo time)
@@ -73,11 +74,13 @@ const saveTheTeam = () => {
       ClearInput();
       closeModal();
       resetArray();
+      includeList();
     } else {
       updateTeam(index, team);
       includeTeamTable();
       closeModal();
       ClearInput();
+      includeList();
       document.getElementById("name").dataset.index = "new";
     }
   }
@@ -144,9 +147,10 @@ const editDelete = ({ target }) => {
     deletDbTeam(index);
     updateTeam();
     includeTeamTable();
+    includeList();
     console.log(index);
   } else if (action == "share") {
-    console.log("compartilhar");
+    null;
   } else if (action == "edit") {
     editTeam(index);
   } else {
