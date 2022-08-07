@@ -1,7 +1,10 @@
 export const arrayPlayer = [];
 
 export function covertArray(player) {
-  const arrayprimary = player.target.innerText.split("\n");
+
+  const playerContend = `${player.target.innerText} \nid:${player.target.dataset.player}`
+ 
+  const arrayprimary = playerContend.toLowerCase().split("\n") 
   const arrayUpdat = arrayprimary.map((r) => r.replace(" :", ",").split(":"));
   const arrayToObj = () =>
     arrayUpdat.reduce((acc, [key, value]) => {
@@ -14,8 +17,8 @@ export function covertArray(player) {
 export const resetArray = () => arrayPlayer.splice(0, arrayPlayer.length);
 
 export const averageAge = () => {
-  const teamAverageAge = arrayPlayer.reduce((acc, { Age }) => {
-    acc += +Age / 11;
+  const teamAverageAge = arrayPlayer.reduce((acc, { age }) => {
+    acc += +age / 11;
     return acc;
   }, 0);
   return teamAverageAge.toFixed(1);
