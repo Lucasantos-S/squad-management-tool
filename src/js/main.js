@@ -8,8 +8,7 @@ import { includeList } from "./modules/topFiveAge.js";
 import {migratoryPlayer} from "./modules/pickedPlayer.js";
 migratoryPlayer()
 includeList()
-/*SALVANDO OS INPUT NO LOCAL STOTAGE*/
-/**botao pra salvar o time */
+
 const btnSave = document.querySelector(".btn-save");
 
 export function getLocalStotage() {
@@ -19,23 +18,22 @@ export function getLocalStotage() {
 const setLocalStogae = (dbTeam) =>
   localStorage.setItem("teams", JSON.stringify(dbTeam));
 
-/*pega o index e novo time, depois puxar o localStorage, altera o time de acordo com o index passado
-(database[numero do index] = ao novo time)
-*/
+
+
 const updateTeam = (index, team) => {
   const dbTeam = getLocalStotage();
   dbTeam[index] = team;
   setLocalStogae(dbTeam);
 };
 
-/* da mesma forma que e feito com o update, aqui foi utiizado o metedo splice que excluir o item/index do array*/
+
 const deletDbTeam = (index) => {
   const dbteam = getLocalStotage();
   dbteam.splice(index, 1);
   setLocalStogae(dbteam);
 };
 
-/* cria o time, pega o objeto verificado no getLocalStotage, manda com o push para o array que vai estar vazio, depois envia no setLocalStogae que da um set no localStorage, passando o teams, e o objeto dentro de um array*/
+
 
 const creatTeam = (team) => {
   const dbTeam = getLocalStotage();
@@ -43,9 +41,7 @@ const creatTeam = (team) => {
   setLocalStogae(dbTeam);
 };
 
-/* validar os inputs */
 
-/* limpar os campos */
 export const ClearInput = () => {
   const inputs = document.querySelectorAll("#form input");
   const textarea = document.querySelector("#description");
@@ -55,7 +51,7 @@ export const ClearInput = () => {
   textarea.value = "";
 };
 
-/* acrescentar os valores em um objeto */
+
 const saveTheTeam = () => {
      
   if (validateInput()) {
@@ -93,7 +89,7 @@ const saveTheTeam = () => {
  
 };
 
-/* incluindo a tabela no tbody */
+
 
 const includeTeamTable = () => {
   const dbTeam = getLocalStotage();
@@ -123,7 +119,7 @@ const includeTeamTable = () => {
 
 includeTeamTable();
 
-/* apagando as linhas antes de incluir a proxima*/
+
 const clearTable = () => {
   const rows = document.querySelectorAll(".records table tr");
   rows.forEach((row) => row.parentNode.removeChild(row));
@@ -137,7 +133,7 @@ const fillFilds = (team) => {
   document.querySelector("[data-position]").dataset.position = "3-4-3";
 };
 
-///editar e deletar um time da tabela
+
 
 const editTeam = (index) => {
   const team = getLocalStotage()[index];
@@ -146,7 +142,7 @@ const editTeam = (index) => {
   activeModal();
 };
 
-///deletar ou editar o array do db, passando o index
+
 
 const editDelete = ({ target }) => {
   const [action, index] = target.id.split("-");

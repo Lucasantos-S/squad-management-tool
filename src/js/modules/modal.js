@@ -6,6 +6,7 @@ const modalContainer = document.querySelector(".modal-container");
 export const activeModal = () => {
   modalContainer.classList.add("active");
   fieldReset();
+   document.getElementById("name").classList.remove('erro')
 };
 
 buttonModal.addEventListener("click", activeModal);
