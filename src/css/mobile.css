@@ -11,7 +11,10 @@
   }
   .configure-squad{
    flex-direction: column-reverse;
+   flex-wrap: wrap;
    margin: 0 auto;
+   max-width: 400px;
+  
    
   }
   .Search-container{

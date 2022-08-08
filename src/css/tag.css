@@ -26,11 +26,13 @@
     flex-wrap: wrap;
 }
 .tag-content ul li{
+    color: #Fff;
     list-style: none;
-    background-color: #fff;
-    border-radius: 5px;
+    background-color:red;
     margin: 3px;
     float: left;
+    padding: 5px 10px 5px 15px;
+    border-radius: 20px ;
 }
 
 .tag-content input{
@@ -38,7 +40,7 @@
     border: none;
     height: 30px;
     margin-left: 5px;
-    background-color: #efefef;
+    background-color: #fff;
     padding: 5px;
     border-radius: 5px;
     margin: 3px;  
@@ -50,5 +52,8 @@
     padding: 0 3px;
     border: none;
     cursor: pointer;
-    background-color: #ddd;
+    background-color:red;
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 10px;
 }
