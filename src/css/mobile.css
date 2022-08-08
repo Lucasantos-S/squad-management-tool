@@ -31,6 +31,10 @@
     padding: 10px;
   }
 
+  .picked-player{
+    flex-direction: column;
+  }
+
   .modal-container {
    
     width: 100%;
@@ -39,6 +43,10 @@
 
   .modal-container h1 {
    font-size: 1.2rem;
+  }
+
+  .Search-container{
+    max-width: 300px;
   }
 
   .drop-field{
@@ -50,5 +58,9 @@
    width:40px;
    height: 40px;
    
+  }
+
+  .btn-save{
+    max-width: 300px;
   }
 }
