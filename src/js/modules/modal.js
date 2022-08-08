@@ -1,8 +1,13 @@
 import { ClearInput } from "../main.js";
+import {fieldReset} from "./formation";
 const buttonModal = document.querySelector(".btn-modal");
 const modalContainer = document.querySelector(".modal-container");
 
-export const activeModal = () => modalContainer.classList.add("active");
+export const activeModal = () =>  {
+  modalContainer.classList.add("active");
+  fieldReset()
+}
+modalContainer.classList.add("active");
 buttonModal.addEventListener("click", activeModal);
 
 export const closeModal = () => {
@@ -10,12 +15,7 @@ export const closeModal = () => {
   document.getElementById("name").dataset.index = "new";
   document.getElementById("name").classList.remove("erro");
   ClearInput();
+  fieldReset()
 };
 document.querySelector(".close-modal").addEventListener("click", closeModal);
 
-function teste(event) {
-  event.pageY = 0;
-  console.log(event.pageY);
-}
-
-window.addEventListener("scroll", teste);

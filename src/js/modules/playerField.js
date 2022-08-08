@@ -5,7 +5,7 @@ export const responsePlay = (player) => {
   const array = player.map(({ name, age, nationality, id }) => {
     return `
       <div class="drag-player" draggable="true" data-player="${id}">
-        <li > Nome: <span >${name} </span> </li>
+        <li > Name: <span >${name} </span> </li>
         <li> Nationality: <span>${nationality} </span></li>
         <li class="age"> Age: <span>${age} </span></li>
       </div>
