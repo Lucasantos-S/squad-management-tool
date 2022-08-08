@@ -159,7 +159,7 @@ label[name="Team-type"]:nth-child(2){
     resize: none;
     border: 3px solid #eee7ee;
     outline-color: #eee7ee;
-    font-size: 1.3rem;
-    padding: 20px;
+    font-size: 1rem;
+    padding: 15px;
 }
 

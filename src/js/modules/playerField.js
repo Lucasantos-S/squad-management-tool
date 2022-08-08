@@ -1,16 +1,17 @@
 import "./fetchApi.js";
-import {covertArray} from "./dataPlayer.js";
+import { covertArray } from "./dataPlayer.js";
 export const responsePlay = (player) => {
- const playerList = document.querySelector(".drag-players");
-  const array = player.map(({ name, age, nationality, id }) => {
-    return `
-      <div class="drag-player" draggable="true" data-player="${id}">
-        <li > Name: <span >${name} </span> </li>
-        <li> Nationality: <span>${nationality} </span></li>
-        <li class="age"> Age: <span>${age} </span></li>
-      </div>
-      `;
-  });
+  const playerList = document.querySelector(".drag-players");
+  const array = player.reduce((acc, { name, age, nationality, id }) => {
+    acc += `
+    <div class="drag-player" draggable="true" data-player="${id}">
+      <li> Name: <span >${name} </span> </li>
+      <li> Nationality: <span>${nationality} </span></li>
+      <li class="age"> Age: <span>${age} </span></li>
+    </div>
+    `;
+    return acc;
+  }, "");
   playerList.innerHTML = array;
   const dragItems = document.querySelectorAll(".drag-player");
   dragItems.forEach((item) => {
@@ -26,12 +27,10 @@ dropItems.forEach((box) => {
   box.addEventListener("dragleave", dragLeave);
 });
 
-
-
 function dragStart(event) {
   covertArray(event);
-    const name = event.target.innerText.split(" ")[1 ].charAt(0)
-    const lastName = event.target.innerText.split(" ")[2].charAt(0)
+  const name = event.target.innerText.split(" ")[1].charAt(0);
+  const lastName = event.target.innerText.split(" ")[2].charAt(0);
   event.dataTransfer.setData("text/plain", name + lastName);
 
   setTimeout(() => {
@@ -52,7 +51,6 @@ function dropEvent(event) {
   this.append(namePlayer);
   this.classList.remove("enter");
 }
-
 
 function dragLeave(event) {
   event.preventDefault();

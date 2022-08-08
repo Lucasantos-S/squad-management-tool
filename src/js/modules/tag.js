@@ -19,17 +19,14 @@ export const addTagName = () => {
     li.innerHTML = `
       <div>
         <span>${item}</span>
-        <button class="btn-remove-Tag" onclick="removeTag(${event, index})">x</button>
+        <button class="btn-remove-Tag" onclick="removeTag(${index})">x</button>
       </div>
     `;
     ul.appendChild(li);
   });
-  
 };
 
-function removeTag(event, index) {
-
+function removeTag(index) {
   tagList.splice(index, 1);
- 
+  addTagName();
 }
-

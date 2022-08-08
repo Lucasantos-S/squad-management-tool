@@ -23,7 +23,7 @@ option {
   margin-top: 5px;
 }
 
-.box-formation{
+.box-formation {
   display: block;
   position: relative;
 }
@@ -36,18 +36,16 @@ option {
   margin-bottom: 10px;
   line-height: 5px;
   cursor: pointer;
-  
 }
 .box-formation::before {
   font-family: FontAwesome;
   position: absolute;
   display: block;
-  right:  22px;
+  right: 22px;
   width: 1px;
   height: 30px;
   color: #000;
   border-left: 1px solid rgba(3, 3, 3, 0.212);
- 
 }
 
 .drop-field {
@@ -82,19 +80,6 @@ option {
   color: #fff;
   position: relative;
 }
-.drop_position::after{
-  content: '+';
-  margin-top: 20px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 1.5rem;
-  font-weight: bolder;
-  color: rgba(255, 255, 255, 0.767);
-  position: relative;
-  display: block;
-  position: absolute;
-  left: 22px;
-  top: -7px;
-}
 
 .btn-save {
   width: 100%;
@@ -110,7 +95,6 @@ option {
   cursor: pointer;
 }
 
-.btn-save:hover{
+.btn-save:hover {
   background: #a52590;
-  
 }
