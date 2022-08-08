@@ -1,3 +1,4 @@
+
 export const arrayPlayer = [];
 
 export function covertArray(player) {

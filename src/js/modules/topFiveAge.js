@@ -39,38 +39,3 @@ export const includeList = () => {
   }
 };
 
-const dbTeam = getLocalStotage();
-
-
-const arrayId = [];
-const array = dbTeam.map((item) => {
-    return item.player
-});
-array.map(r => r.map(r => arrayId.push(r.id)))
-
-function migratoryPlayer(arr) {
-  let counts = {};
-  arr.forEach((count) => {
-    counts[count] = (counts[count] || 0) + 1;
-  });
-
-  const maxValue = Math.max(...Object.values(counts));
-  const minValue = Math.min(...Object.values(counts));
-  const maxNum = Object.keys(counts).find((key)=> counts[key] === maxValue)
-  const minNum = Object.keys(counts).find((key)=> counts[key] === minValue)
-  mostPickedPlayer(maxNum, maxValue)
-  lessPickedPlayer(minNum, minValue)
-}
-
-migratoryPlayer(arrayId);
-
-function mostPickedPlayer(id, value){
-  console.log(id , value)
-}
-
-function lessPickedPlayer(id, value){
-  console.log(id , value)
-}
-
-lessPickedPlayer()
-mostPickedPlayer()

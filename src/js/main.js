@@ -1,13 +1,13 @@
 import { activeModal, closeModal } from "./modules/modal.js";
 import { tagList } from "./modules/tag.js";
 import "./modules/playerField.js";
-import { formationTeam } from "./modules/formation.js";
+import { formationTeam, fieldReset} from "./modules/formation.js";
 import { validateInput } from "./modules/Validation.js";
 import { arrayPlayer, resetArray, averageAge } from "./modules/dataPlayer.js";
 import { includeList } from "./modules/topFiveAge.js";
-
-
-
+import {migratoryPlayer} from "./modules/pickedPlayer.js";
+migratoryPlayer()
+includeList()
 /*SALVANDO OS INPUT NO LOCAL STOTAGE*/
 /**botao pra salvar o time */
 const btnSave = document.querySelector(".btn-save");
@@ -57,6 +57,7 @@ export const ClearInput = () => {
 
 /* acrescentar os valores em um objeto */
 const saveTheTeam = () => {
+     
   if (validateInput()) {
     const team = {
       name: document.getElementById("name").value,
@@ -74,16 +75,22 @@ const saveTheTeam = () => {
       ClearInput();
       closeModal();
       resetArray();
-      includeList();
+      includeList()
+      migratoryPlayer()
+      fieldReset()
+  
     } else {
       updateTeam(index, team);
       includeTeamTable();
       closeModal();
       ClearInput();
       includeList();
+      migratoryPlayer()
+      fieldReset()
       document.getElementById("name").dataset.index = "new";
     }
   }
+ 
 };
 
 /* incluindo a tabela no tbody */
@@ -148,7 +155,7 @@ const editDelete = ({ target }) => {
     updateTeam();
     includeTeamTable();
     includeList();
-    console.log(index);
+    migratoryPlayer()
   } else if (action == "share") {
     null;
   } else if (action == "edit") {
@@ -160,3 +167,8 @@ const editDelete = ({ target }) => {
 /*events */
 btnSave.addEventListener("click", saveTheTeam);
 document.querySelector(".records>tbody").addEventListener("click", editDelete);
+
+
+
+
+
